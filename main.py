@@ -18,6 +18,11 @@ from src.components.map import create_map_component, load_geojson, create_datafr
 from src.components.explanations import create_explanations_component
 from src.components.project_explanation import create_project_explanation_component
 
+# import des nouveaux composants graphiques
+from src.components.scatter_income_gini import create_scatter_income_gini
+from src.components.boxplot_income_distribution import create_boxplot_income_distribution
+from src.components.correlation_heatmap import create_correlation_heatmap
+
 
 # import des utilitaires
 from utils.get_data import download_all_data
@@ -77,6 +82,14 @@ app.layout = dbc.Container(
                 dbc.Row(
                     [
                         dbc.Col(generate_heatmap_revenu_non_salarie(df_filtre_IDF), width=6, className="mb-4"),
+                        dbc.Col(create_scatter_income_gini(df_filtre_IDF), width=6, className="mb-4"),
+                    ],
+                    className="mb-4",
+                ),
+                dbc.Row(
+                    [
+                        dbc.Col(create_boxplot_income_distribution(df_filtre_IDF), width=6, className="mb-4"),
+                        dbc.Col(create_correlation_heatmap(df_filtre_IDF), width=6, className="mb-4"),
                     ],
                     className="mb-4",
                 ),
